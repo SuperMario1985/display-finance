@@ -126,8 +126,8 @@
             <div class="top">
               <h5>液位显示</h5>
               <div class="liquid-info" v-if="swtchInfo">
-                <span>调蓄池液位：{{ swtchInfo.liquidLevel }}</span>
-                <span>景观池液位：{{ swtchInfo.liquidLevel2 }}</span>
+                <span>调蓄池液位：{{ swtchInfo.liquidLevel }}米</span>
+                <span>景观池液位：{{ swtchInfo.liquidLevel2 }}米</span>
               </div>
             </div>
             <div class="center">
@@ -232,7 +232,7 @@
                     <p>年雨水利用量:</p>
                     <strong>
                       <i>{{ swtchInfo.yearTotalRain }}</i>
-                      <span>M</span>
+                      <span>m³</span>
                     </strong>
                   </div>
                 </div>
@@ -241,7 +241,7 @@
                     <p>累计雨水利用量:</p>
                     <strong>
                       <i>{{ swtchInfo.yearTotalUsed }}</i>
-                      <span>M</span>
+                      <span>m³</span>
                     </strong>
                   </div>
                 </div>
@@ -293,7 +293,7 @@
                   <strong v-else-if="swtchInfo.reusePumpOperation13"
                     >关位</strong
                   >
-                  <strong v-else>停机</strong>
+                  <strong v-else>关闭</strong>
                   <img
                     v-if="swtchInfo.reusePumpOperation12"
                     src="../assets/images/config/btn2-active.gif"
@@ -312,7 +312,7 @@
                   <strong v-else-if="swtchInfo.reusePumpOperation11"
                     >关位</strong
                   >
-                  <strong v-else>停机</strong>
+                  <strong v-else>关闭</strong>
                   <img
                     v-if="swtchInfo.reusePumpOperation10"
                     src="../assets/images/config/btn2-active.gif"

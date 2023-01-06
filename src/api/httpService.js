@@ -1,6 +1,7 @@
 import axios from "axios";
 let host = 'http://127.0.0.1:8080';
 let httpServe = axios.create();
+// 城市列表 https://dev.qweather.com/docs/resource/location-list/
 function nowWeather(returnFun) {
     let resultInfo = {
         success: false,
@@ -9,7 +10,7 @@ function nowWeather(returnFun) {
     }
     httpServe({
         method: "get",
-        url: "https://devapi.heweather.net/v7/weather/now?location=101010100&key=506c8ed1fba74434b70d2f45d7476470"
+        url: "https://devapi.heweather.net/v7/weather/now?location=101010700&key=506c8ed1fba74434b70d2f45d7476470"
     }).then(function (response) {
         resultInfo.success = true
         if (response && response.status === 200) {
@@ -33,7 +34,7 @@ function fultherWeather(returnFun) {
     }
     httpServe({
         method: "get",
-        url: "https://devapi.heweather.net/v7/weather/24h?location=101010100&key=506c8ed1fba74434b70d2f45d7476470"
+        url: "https://devapi.heweather.net/v7/weather/24h?location=101010700&key=506c8ed1fba74434b70d2f45d7476470"
     }).then(function (response) {
         resultInfo.success = true
         if (response && response.status === 200) {
@@ -52,7 +53,7 @@ function threeDaysWeather(returnFun) {
     }
     httpServe({
         method: "get",
-        url: "https://devapi.heweather.net/v7/weather/3d?location=101010100&key=506c8ed1fba74434b70d2f45d7476470"
+        url: "https://devapi.heweather.net/v7/weather/3d?location=101010700&key=506c8ed1fba74434b70d2f45d7476470"
     }).then(function (response) {
         resultInfo.success = true
         if (response && response.status === 200) {

@@ -476,30 +476,84 @@
             background: url("../assets/images/display/bg-feature.png") center center no-repeat;
             background-size: 100% 100%;
 
-            .device-status {
-              position: relative;
-              width: 100%;
-              height: 100%;
-              background: url("../assets/images/display/demo3.png") center 30px no-repeat;
-              background-size: 421px 244px;
+            // .device-status {
+            //   position: relative;
+            //   width: 100%;
+            //   height: 100%;
+            //   background: url("../assets/images/display/demo3.png") center 30px no-repeat;
+            //   background-size: 421px 244px;
 
-              i {
-                position: absolute;
-                left: 152px;
-                top: 80px;
-                z-index: 10;
-                width: 44px;
-                height: 72px;
-                background: url("../assets/images/display/icon-water.png") center center no-repeat;
-                background-size: 100% 100%;
-                animation-name: mychange2;
-                /*动画的名字*/
-                animation-duration: 1000ms;
-                /*定义动画完成一个周期所需要的时间，以秒或毫秒计*/
-                animation-iteration-count: infinite;
-                /*定义动画的播放次数，这里是无限播放*/
-                animation-direction: alternate;
-                /*定义是否应该轮流反向播放动画，这里是动画轮流播放*/
+            //   i {
+            //     position: absolute;
+            //     left: 152px;
+            //     top: 80px;
+            //     z-index: 10;
+            //     width: 44px;
+            //     height: 72px;
+            //     background: url("../assets/images/display/icon-water.png") center center no-repeat;
+            //     background-size: 100% 100%;
+            //     animation-name: mychange2;
+            //     /*动画的名字*/
+            //     animation-duration: 1000ms;
+            //     /*定义动画完成一个周期所需要的时间，以秒或毫秒计*/
+            //     animation-iteration-count: infinite;
+            //     /*定义动画的播放次数，这里是无限播放*/
+            //     animation-direction: alternate;
+            //     /*定义是否应该轮流反向播放动画，这里是动画轮流播放*/
+            //   }
+            // }
+            .device-status {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              padding-top: 40px;
+
+              .img-box {
+                position: relative;
+
+                &>img {
+                  width: 180px;
+                  height: auto;
+                  margin-right: 30px;
+                }
+
+                i {
+                  position: absolute;
+                  left: 64px;
+                  top: 48px;
+                  z-index: 10;
+                  width: 48px;
+                  height: 80px;
+                  background: url("../assets/images/display/icon-water.png") center center no-repeat;
+                  background-size: 100% 100%;
+                  animation-name: mychange2;
+                  /*动画的名字*/
+                  animation-duration: 1000ms;
+                  /*定义动画完成一个周期所需要的时间，以秒或毫秒计*/
+                  animation-iteration-count: infinite;
+                  /*定义动画的播放次数，这里是无限播放*/
+                  animation-direction: alternate;
+                  /*定义是否应该轮流反向播放动画，这里是动画轮流播放*/
+                }
+              }
+
+              .status-item {
+                padding: 10px 0;
+              }
+
+              h6 {
+                font-size: 20px;
+                font-weight: 600;
+                color: #FFFFFF;
+                line-height: 24px;
+                padding-bottom: 4px;
+              }
+
+              p {
+                font-size: 26px;
+                font-weight: 600;
+                color: #FFFFFF;
+                line-height: 30px;
               }
             }
           }
@@ -1121,6 +1175,11 @@
         &.active {
           border-radius: 30px;
           box-shadow: 0px 0px 29px 3px rgba(0, 255, 252, 1);
+        }
+        &.reset{
+          border-radius: 30px;
+          box-shadow: 0px 0px 29px 3px #b6f705;
+          // color: #b6f705;
         }
       }
     }

@@ -139,17 +139,18 @@
                     @click="remoteWritingList('V1000.4', 1)"
                     >绿化灌溉</i
                   >
-                  <i
+                  <!-- <i
                     :class="{ active: ownerConfigPageStatus['V1000.7'] }"
                     @click="remoteWritingList('V1000.7', 1)"
                     >景观补水</i
-                  >
-                  <br />
+                  > -->
+                  <!-- <br /> -->
                   <i class="stop" @click="stopRainBack">停止</i>
-                </div>
-                <div class="btn-box">
                   <i @click="goToConfig">配置参数</i>
                 </div>
+                <!-- <div class="btn-box">
+                  <i @click="goToConfig">配置参数</i>
+                </div> -->
               </div>
             </div>
             <div class="bottom">
@@ -205,7 +206,7 @@
                           alt=""
                         />启用时间
                       </h6>
-                      <p>2022年11月10日</p>
+                      <p>2023年02月15日</p>
                     </div>
                     <div class="status-item">
                       <h6>
@@ -335,11 +336,46 @@
               </div>
             </div>
             <div class="right">
-              <h5>设备状态</h5>
-              <div class="device-status">
-                <i></i>
+                <h5>设备状态</h5>
+                <div class="device-status">
+                  <div class="img-box">
+                    <img
+                      src="../../src/assets/images/display/bg-info05.png"
+                      alt=""
+                    />
+                    <i></i>
+                  </div>
+                  <div class="status-info">
+                    <div class="status-item">
+                      <h6>
+                        <img
+                          src="../../src/assets/images/display/bg-info06.png"
+                          alt=""
+                        />出场编号
+                      </h6>
+                      <p>#000025</p>
+                    </div>
+                    <div class="status-item">
+                      <h6>
+                        <img
+                          src="../../src/assets/images/display/bg-info06.png"
+                          alt=""
+                        />启用时间
+                      </h6>
+                      <p>2023年02月15日</p>
+                    </div>
+                    <div class="status-item">
+                      <h6>
+                        <img
+                          src="../../src/assets/images/display/bg-info06.png"
+                          alt=""
+                        />累计同行时长（小时）
+                      </h6>
+                      <p>1125</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
           </div>
         </div>
         <div class="config" v-if="loginInfo.status === 4">
@@ -395,6 +431,12 @@
               :class="{ active: isSingleContral }"
               @click="remoteWriting('V1000.1', 0)"
               >单独控制</i
+            >
+            <i
+              :class="{ active: isSingleContral }"
+              class="reset"
+              @click="remoteWriting('V1000.2', 1)"
+              >故障复位</i
             >
           </div>
           <div class="config-box">
@@ -477,8 +519,6 @@
                   "
                   >高档启动</i
                 >
-              </div>
-              <div v-show="isShowBtns">
                 <i
                   class="button btn-close"
                   @click="
@@ -492,6 +532,9 @@
                   >停止</i
                 >
               </div>
+              <!-- <div v-show="isShowBtns">
+                
+              </div> -->
               <div>
                 <p v-if="swtchInfo.reusePumpOperation2">运行</p>
                 <p class="error" v-else-if="swtchInfo.error2">故障</p>
@@ -632,6 +675,127 @@
                 />
               </div>
             </div>
+            <div class="config-item">
+              <h6>灯带1</h6>
+              <div v-show="isShowBtns">
+                <i
+                  :class="{ active: swtchInfo.reusePumpOperation21 }"
+                  class="button btn-open"
+                  @click="remoteWriting('V1001.4', 1)"
+                  >启动</i
+                >
+              </div>
+              <div v-show="isShowBtns">
+                <i class="button btn-close" @click="remoteWriting('V1001.4', 0)"
+                  >停止</i
+                >
+              </div>
+              <div>
+                <p v-if="swtchInfo.reusePumpOperation21">运行</p>
+                <p v-else>停机</p>
+                <img
+                  v-if="swtchInfo.reusePumpOperation21"
+                  src="../assets/images/config/btn2-active.gif"
+                  alt=""
+                />
+                <img
+                  v-else
+                  src="../assets/images/config/btn-closed.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="config-item">
+              <h6>灯带2</h6>
+              <div v-show="isShowBtns">
+                <i
+                  :class="{ active: swtchInfo.reusePumpOperation22 }"
+                  class="button btn-open"
+                  @click="remoteWriting('V1001.5', 1)"
+                  >启动</i
+                >
+              </div>
+              <div v-show="isShowBtns">
+                <i class="button btn-close" @click="remoteWriting('V1001.5', 0)"
+                  >停止</i
+                >
+              </div>
+              <div>
+                <p v-if="swtchInfo.reusePumpOperation22">运行</p>
+                <p v-else>停机</p>
+                <img
+                  v-if="swtchInfo.reusePumpOperation22"
+                  src="../assets/images/config/btn2-active.gif"
+                  alt=""
+                />
+                <img
+                  v-else
+                  src="../assets/images/config/btn-closed.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="config-item">
+              <h6>射灯</h6>
+              <div v-show="isShowBtns">
+                <i
+                  :class="{ active: swtchInfo.reusePumpOperation23 }"
+                  class="button btn-open"
+                  @click="remoteWriting('V1001.6', 1)"
+                  >启动</i
+                >
+              </div>
+              <div v-show="isShowBtns">
+                <i class="button btn-close" @click="remoteWriting('V1001.6', 0)"
+                  >停止</i
+                >
+              </div>
+              <div>
+                <p v-if="swtchInfo.reusePumpOperation23">运行</p>
+                <p v-else>停机</p>
+                <img
+                  v-if="swtchInfo.reusePumpOperation23"
+                  src="../assets/images/config/btn2-active.gif"
+                  alt=""
+                />
+                <img
+                  v-else
+                  src="../assets/images/config/btn-closed.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            <div class="config-item">
+              <h6>草坪灯</h6>
+              <div v-show="isShowBtns">
+                <i
+                  :class="{ active: swtchInfo.reusePumpOperation24 }"
+                  class="button btn-open"
+                  @click="remoteWriting('V1001.7', 1)"
+                  >启动</i
+                >
+              </div>
+              <div v-show="isShowBtns">
+                <i class="button btn-close" @click="remoteWriting('V1001.7', 0)"
+                  >停止</i
+                >
+              </div>
+              <div>
+                <p v-if="swtchInfo.reusePumpOperation24">运行</p>
+                <p v-else>停机</p>
+                <img
+                  v-if="swtchInfo.reusePumpOperation24"
+                  src="../assets/images/config/btn2-active.gif"
+                  alt=""
+                />
+                <img
+                  v-else
+                  src="../assets/images/config/btn-closed.png"
+                  alt=""
+                />
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
@@ -1003,6 +1167,10 @@ export default {
         reusePumpOperation16: false,
         reusePumpOperation17: false,
         reusePumpOperation18: false,
+        reusePumpOperation21: false,
+        reusePumpOperation22: false,
+        reusePumpOperation23: false,
+        reusePumpOperation24: false,
         error2: false,
         error3: false,
         error5: false,
@@ -1096,6 +1264,19 @@ export default {
             response.data["V1007.2"] === "1" ? true : false;
           that.swtchInfo.error13 =
             response.data["V1007.3"] === "1" ? true : false;
+          
+          // 灯带1
+          that.swtchInfo.reusePumpOperation21 =
+            response.data["V1005.0"] === "1" ? true : false;
+            // 灯带2
+          that.swtchInfo.reusePumpOperation22 =
+            response.data["V1005.1"] === "1" ? true : false;
+            // 射灯
+          that.swtchInfo.reusePumpOperation23 =
+            response.data["V1005.2"] === "1" ? true : false;
+            // 草坪灯
+          that.swtchInfo.reusePumpOperation24 =
+            response.data["V1005.3"] === "1" ? true : false;
 
           // 过滤器
           that.swtchInfo.reusePumpOperation3 =
@@ -1118,7 +1299,7 @@ export default {
           // 调蓄池
           that.swtchInfo.liquidLevel = response.data["VD1008"];
           let test = response.data["VD1020"];
-          that.chartData.rows[0].percent = Number(test) / 25;
+          that.chartData.rows[0].percent = Number(test) / 50;
           that.swtchInfo.frequency = response.data["VD1008"];
           that.swtchInfo.liquidDown = response.data["VD904"];
           that.swtchInfo.liquidUp = response.data["VD900"];
@@ -1126,7 +1307,7 @@ export default {
           // 景观池
           that.swtchInfo.liquidLevel2 = response.data["VD1012"];
           let test2 = response.data["VD1024"];
-          that.chartData2.rows[0].percent = Number(test2) / 3;
+          that.chartData2.rows[0].percent = Number(test2) / 4.8;
 
           that.swtchInfo.frequency2 = response.data["VD1012"];
 
@@ -1349,7 +1530,7 @@ export default {
       this.timeoutToken = setTimeout(() => {
         console.log("回到屏保");
         this.loginInfo.status = 1;
-      }, 180000);
+      }, 1800000);
       console.log("开启新的定时器");
     },
     // 去配置页

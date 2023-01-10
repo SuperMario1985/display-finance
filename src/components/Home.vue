@@ -212,23 +212,49 @@
                 <div class="btn-info">
                   <div class="btn-box">
                     <i
-                      :class="{ active: ownerConfigPageStatus['V1001.0'] }"
-                      @click="remoteWriting('V1001.0', 1)"
+                      :class="{ active: swtchInfo.reusePumpOperation16 }"
+                      @click="
+                        remoteWriting('V1001.0', 1);
+                        swtchInfo.reusePumpOperation16 = true;
+                        swtchInfo.reusePumpOperation17 = false;
+                        swtchInfo.reusePumpOperation18 = false;
+                      "
                       >镜面水低档开</i
                     >
                     <i
-                      :class="{ active: ownerConfigPageStatus['V1001.2'] }"
-                      @click="remoteWriting('V1001.2', 1)"
+                      :class="{ active: swtchInfo.reusePumpOperation18 }"
+                      @click="
+                        remoteWriting('V1001.2', 1);
+                        swtchInfo.reusePumpOperation16 = false;
+                        swtchInfo.reusePumpOperation17 = false;
+                        swtchInfo.reusePumpOperation18 = true;
+                      "
                       >镜面水高档开</i
                     >
                   </div>
                   <div class="btn-box">
                     <i
-                      :class="{ active: ownerConfigPageStatus['V1001.1'] }"
-                      @click="remoteWriting('V1001.1', 1)"
+                      :class="{ active: swtchInfo.reusePumpOperation17 }"
+                      @click="
+                        remoteWriting('V1001.1', 1);
+                        swtchInfo.reusePumpOperation16 = false;
+                        swtchInfo.reusePumpOperation17 = true;
+                        swtchInfo.reusePumpOperation18 = false;
+                      "
                       >镜面水中档开</i
                     >
-                    <i class="stop" @click="stopWaterCheck">停止</i>
+                    <i
+                      class="stop"
+                      @click="
+                        remoteWriting('V1001.0', 0);
+                        remoteWriting('V1001.1', 0);
+                        remoteWriting('V1001.2', 0);
+                        swtchInfo.reusePumpOperation16 = false;
+                        swtchInfo.reusePumpOperation17 = false;
+                        swtchInfo.reusePumpOperation18 = false;
+                      "
+                      >停止</i
+                    >
                   </div>
                 </div>
               </div>

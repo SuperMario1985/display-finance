@@ -128,25 +128,78 @@
               <div class="liquid-info" v-if="swtchInfo">
                 <span>调蓄池液位：{{ swtchInfo.liquidLevel }}米</span>
                 <span>景观池液位：{{ swtchInfo.liquidLevel2 }}米</span>
+                <i @click="goToConfig">配置参数</i>
               </div>
             </div>
             <div class="center">
-              <h5>雨水回收</h5>
+              <h5>功能选择</h5>
               <div class="btn-info">
                 <div class="btn-box btn-box2">
                   <i
                     :class="{ active: ownerConfigPageStatus['V1000.4'] }"
-                    @click="remoteWritingList('V1000.4', 1)"
+                    @click="
+                      remoteWriting('V1000.4', 1);
+                      ownerConfigPageStatus['V1000.4'] = true;
+                    "
                     >绿化灌溉</i
                   >
-                  <!-- <i
+                  <i
                     :class="{ active: ownerConfigPageStatus['V1000.7'] }"
-                    @click="remoteWritingList('V1000.7', 1)"
+                    @click="
+                      remoteWriting('V1000.7', 1);
+                      ownerConfigPageStatus['V1000.7'] = true;
+                    "
                     >景观补水</i
-                  > -->
-                  <!-- <br /> -->
-                  <i class="stop" @click="stopRainBack">停止</i>
-                  <i @click="goToConfig">配置参数</i>
+                  >
+                  <i
+                    :class="{ active: ownerConfigPageStatus['V1002.6'] }"
+                    @click="
+                      remoteWriting('V1002.6', 1);
+                      ownerConfigPageStatus['V1002.6'] = true;
+                    "
+                    >灯带开</i
+                  >
+                  <i
+                    :class="{ active: ownerConfigPageStatus['V1002.7'] }"
+                    @click="
+                      remoteWriting('V1002.7', 1);
+                      ownerConfigPageStatus['V1002.7'] = true;
+                    "
+                    >庭院灯开</i
+                  >
+                  <br />
+                  <i
+                    class="stop"
+                    @click="
+                      remoteWriting('V1000.4', 0);
+                      ownerConfigPageStatus['V1000.4'] = false;
+                    "
+                    >停止</i
+                  >
+                  <i
+                    class="stop"
+                    @click="
+                      remoteWriting('V1000.7', 0);
+                      ownerConfigPageStatus['V1000.7'] = false;
+                    "
+                    >停止</i
+                  >
+                  <i
+                    class="stop"
+                    @click="
+                      remoteWriting('V1002.6', 0);
+                      ownerConfigPageStatus['V1002.6'] = false;
+                    "
+                    >灯带开</i
+                  >
+                  <i
+                    class="stop"
+                    @click="
+                      remoteWriting('V1002.7', 0);
+                      ownerConfigPageStatus['V1002.7'] = false;
+                    "
+                    >庭院灯关</i
+                  >
                 </div>
                 <!-- <div class="btn-box">
                   <i @click="goToConfig">配置参数</i>
@@ -155,25 +208,25 @@
             </div>
             <div class="bottom">
               <div class="left">
-                <h5>水质检测</h5>
+                <h5>镜面水模式控制</h5>
                 <div class="btn-info">
                   <div class="btn-box">
                     <i
                       :class="{ active: ownerConfigPageStatus['V1001.0'] }"
-                      @click="remoteWritingList('V1001.0', 1)"
-                      >循环泵开启/低档</i
+                      @click="remoteWriting('V1001.0', 1)"
+                      >镜面水低档开</i
                     >
                     <i
                       :class="{ active: ownerConfigPageStatus['V1001.2'] }"
-                      @click="remoteWritingList('V1001.2', 1)"
-                      >循环泵高档</i
+                      @click="remoteWriting('V1001.2', 1)"
+                      >镜面水高档开</i
                     >
                   </div>
                   <div class="btn-box">
                     <i
                       :class="{ active: ownerConfigPageStatus['V1001.1'] }"
-                      @click="remoteWritingList('V1001.1', 1)"
-                      >循环泵中档</i
+                      @click="remoteWriting('V1001.1', 1)"
+                      >镜面水中档开</i
                     >
                     <i class="stop" @click="stopWaterCheck">停止</i>
                   </div>
@@ -336,46 +389,46 @@
               </div>
             </div>
             <div class="right">
-                <h5>设备状态</h5>
-                <div class="device-status">
-                  <div class="img-box">
-                    <img
-                      src="../../src/assets/images/display/bg-info05.png"
-                      alt=""
-                    />
-                    <i></i>
+              <h5>设备状态</h5>
+              <div class="device-status">
+                <div class="img-box">
+                  <img
+                    src="../../src/assets/images/display/bg-info05.png"
+                    alt=""
+                  />
+                  <i></i>
+                </div>
+                <div class="status-info">
+                  <div class="status-item">
+                    <h6>
+                      <img
+                        src="../../src/assets/images/display/bg-info06.png"
+                        alt=""
+                      />出场编号
+                    </h6>
+                    <p>#000025</p>
                   </div>
-                  <div class="status-info">
-                    <div class="status-item">
-                      <h6>
-                        <img
-                          src="../../src/assets/images/display/bg-info06.png"
-                          alt=""
-                        />出场编号
-                      </h6>
-                      <p>#000025</p>
-                    </div>
-                    <div class="status-item">
-                      <h6>
-                        <img
-                          src="../../src/assets/images/display/bg-info06.png"
-                          alt=""
-                        />启用时间
-                      </h6>
-                      <p>2023年02月15日</p>
-                    </div>
-                    <div class="status-item">
-                      <h6>
-                        <img
-                          src="../../src/assets/images/display/bg-info06.png"
-                          alt=""
-                        />累计同行时长（小时）
-                      </h6>
-                      <p>1125</p>
-                    </div>
+                  <div class="status-item">
+                    <h6>
+                      <img
+                        src="../../src/assets/images/display/bg-info06.png"
+                        alt=""
+                      />启用时间
+                    </h6>
+                    <p>2023年02月15日</p>
+                  </div>
+                  <div class="status-item">
+                    <h6>
+                      <img
+                        src="../../src/assets/images/display/bg-info06.png"
+                        alt=""
+                      />累计同行时长（小时）
+                    </h6>
+                    <p>1125</p>
                   </div>
                 </div>
               </div>
+            </div>
           </div>
         </div>
         <div class="config" v-if="loginInfo.status === 4">
@@ -795,7 +848,6 @@
                 />
               </div>
             </div>
-            
           </div>
         </div>
       </div>
@@ -1031,7 +1083,7 @@ export default {
             label: {
               formatter(options) {
                 const { seriesName, value } = options;
-                return `${(value * 25).toFixed(1)}m³`;
+                return `${(value * 50).toFixed(1)}m³`;
               },
               fontSize: 15,
               color: "green",
@@ -1071,7 +1123,7 @@ export default {
             label: {
               formatter(options) {
                 const { seriesName, value } = options;
-                return `${(value * 3).toFixed(1)}m³`;
+                return `${(value * 4.8).toFixed(1)}m³`;
               },
               fontSize: 15,
               color: "green",
@@ -1264,17 +1316,17 @@ export default {
             response.data["V1007.2"] === "1" ? true : false;
           that.swtchInfo.error13 =
             response.data["V1007.3"] === "1" ? true : false;
-          
+
           // 灯带1
           that.swtchInfo.reusePumpOperation21 =
             response.data["V1005.0"] === "1" ? true : false;
-            // 灯带2
+          // 灯带2
           that.swtchInfo.reusePumpOperation22 =
             response.data["V1005.1"] === "1" ? true : false;
-            // 射灯
+          // 射灯
           that.swtchInfo.reusePumpOperation23 =
             response.data["V1005.2"] === "1" ? true : false;
-            // 草坪灯
+          // 草坪灯
           that.swtchInfo.reusePumpOperation24 =
             response.data["V1005.3"] === "1" ? true : false;
 
@@ -1554,6 +1606,7 @@ export default {
       } else if (tag === "V1000.1" && val === 1) {
         this.isSingleContral = false;
       }
+
       httpService.remoteWriting(tag, val, () => {
         setTimeout(() => {
           this.getInfo();
